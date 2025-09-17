@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ava Education — Learn Faster with AI</title>
+  <meta name="description" content="Ava Education helps students master English and exams with AI-powered lessons, practice, and feedback." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' x2='1' y1='0' y2='1'%3E%3Cstop stop-color='%232b7cff'/%3E%3Cstop offset='1' stop-color='%2372e0ff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='128' height='128' rx='24' fill='url(%23g)'/%3E%3Cpath d='M32 80c0-24 16-40 32-40s32 16 32 40' fill='none' stroke='%23fff' stroke-width='10' stroke-linecap='round'/%3E%3Ccircle cx='64' cy='50' r='10' fill='%23fff'/%3E%3C/svg%3E" />
+  <style>
+    :root{
+      --bg:#0b1020; --surface:#0f1731; --card:#121b3a; --muted:#8ea0c8; --text:#eaf0ff;
+      --accent:#4ea1ff; --accent-2:#7dd3fc; --ring: rgba(78,161,255,.35); --ok:#9be380;
+      --shadow: 0 10px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.04);
+      --radius: 16px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, Inter, Arial, "Noto Sans", "PingFang SC", "Hiragino Sans GB", sans-serif;
+      color:var(--text); background:
+       radial-gradient(1200px 600px at 10% -20%, rgba(78,161,255,.25), transparent 60%),
+       radial-gradient(900px 480px at 110% 10%, rgba(125,211,252,.15), transparent 50%),
+       var(--bg);
+      line-height:1.6;
+    }
+    a{color:var(--accent); text-decoration:none}
+    a:hover{color:#a3d5ff}
+    .wrap{max-width:1100px; margin:0 auto; padding:0 20px}
+    .btn{
+      display:inline-flex; align-items:center; gap:.6rem;
+      padding:.9rem 1.2rem; border-radius:999px; font-weight:700; letter-spacing:.2px;
+      background:linear-gradient(135deg,var(--accent), var(--accent-2));
+      color:#06203e; border:0; cursor:pointer; box-shadow: var(--shadow);
+      transition: transform .06s ease, filter .2s ease;
+    }
+    .btn:hover{transform: translateY(-1px)}
+    .btn:active{transform: translateY(0)}
+    .btn.ghost{
+      background:transparent; color:var(--text); border:1px solid rgba(255,255,255,.18);
+      backdrop-filter: blur(6px);
+    }
+    header{
+      position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(10px);
+      background: linear-gradient(180deg, rgba(11,16,32,.75), rgba(11,16,32,.35));
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between; padding:14px 0;
+    }
+    .brand{display:flex; align-items:center; gap:.7rem; font-weight:800; letter-spacing:.2px}
+    .brand-badge{
+      width:34px; height:34px; border-radius:10px; display:grid; place-items:center;
+      background:linear-gradient(135deg,#2b7cff, #72e0ff); box-shadow: var(--shadow);
+    }
+    .nav ul{display:flex; gap:1.2rem; list-style:none; padding:0; margin:0}
+    .nav a{color:#cfe3ff}
+    .burger{display:none}
+    @media (max-width:860px){
+      .nav ul{display:none}
+      .burger{display:inline-flex; background:transparent; border:1px solid rgba(255,255,255,.2); color:#cfe3ff; border-radius:10px; padding:.6rem}
+      .mobile{display:none; position:absolute; left:20px; right:20px; top:64px; background:var(--surface); border:1px solid rgba(255,255,255,.08); border-radius:14px; padding:10px}
+      .mobile a{display:block; padding:10px 12px; border-radius:10px}
+      .mobile a:hover{background:rgba(255,255,255,.06)}
+    }
+
+    .hero{padding:80px 0 40px}
+    .hero-grid{display:grid; grid-template-columns: 1.2fr 1fr; gap:40px; align-items:center}
+    .kicker{color:var(--accent-2); font-weight:700; letter-spacing:.25em; font-size:.82rem}
+    h1{font-size: clamp(2rem, 4vw, 3.2rem); line-height:1.1; margin:.4rem 0 1rem}
+    .lead{color:#cfe3ff; font-size:1.05rem; max-width:58ch}
+    .meta{display:flex; gap:16px; align-items:center; margin:22px 0 28px}
+    .meta .pill{
+      font-size:.85rem; color:#8fb5ff; border:1px solid rgba(125,211,252,.28);
+      padding:.35rem .65rem; border-radius:999px; background:rgba(125,211,252,.08)
+    }
+    .hero .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:18px; box-shadow: var(--shadow);
+    }
+    .sample{
+      display:grid; grid-template-columns: 1fr 1fr; gap:12px; margin-top:8px
+    }
+    .snippet{
+      background:#0a132b; border:1px solid rgba(255,255,255,.07); border-radius:12px; padding:12px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      color:#b9cdfc; font-size:.9rem; line-height:1.4; position:relative;
+    }
+    .snippet .tag{position:absolute; top:8px; right:10px; font-size:.7rem; color:#88a4e6}
+
+    section{padding:70px 0}
+    h2{font-size: clamp(1.6rem, 3.2vw, 2.2rem); margin:0 0 10px}
+    .sub{color:#c9d9ff; margin:0 0 26px}
+    .grid{display:grid; grid-template-columns: repeat(3, 1fr); gap:18px}
+    @media (max-width:900px){ .hero-grid{grid-template-columns:1fr} .grid{grid-template-columns:1fr; } .sample{grid-template-columns:1fr} }
+
+    .tile{
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:18px; box-shadow: var(--shadow);
+    }
+    .tile h3{margin:6px 0 8px; font-size:1.1rem}
+    .tile p{margin:0; color:#cfe3ff}
+    .icon{
+      width:42px; height:42px; border-radius:10px; display:grid; place-items:center; margin-bottom:10px;
+      background:linear-gradient(135deg, rgba(78,161,255,.25), rgba(125,211,252,.25));
+      border:1px solid rgba(255,255,255,.12)
+    }
+
+    .courses .card{display:flex; flex-direction:column; gap:12px}
+    .courses .badge{font-size:.75rem; color:#a8ffc3; border:1px solid rgba(155,227,128,.35); background: rgba(155,227,128,.08); padding:.25rem .55rem; border-radius:999px}
+
+    .pricing .plan{
+      padding:22px; border-radius:var(--radius);
+      border:1px solid rgba(255,255,255,.08); background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      box-shadow: var(--shadow);
+    }
+    .price{font-weight:900; font-size:2rem}
+    .list{margin:12px 0 0; padding:0; list-style:none}
+    .list li{padding:8px 0; display:flex; gap:10px; align-items:baseline; color:#d8e7ff}
+    .tick{color:var(--ok); font-weight:900}
+
+    .testimonials .quote{
+      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.08); padding:18px; border-radius:var(--radius);
+    }
+    blockquote{margin:0; color:#dbe8ff}
+    .who{color:#9fb7ff; font-size:.95rem; margin-top:8px}
+
+    .cta{
+      background: linear-gradient(180deg, rgba(78,161,255,.14), rgba(125,211,252,.08));
+      border:1px solid rgba(255,255,255,.12); border-radius:calc(var(--radius) + 6px);
+      padding:26px; box-shadow: var(--shadow);
+    }
+    form{
+      display:grid; grid-template-columns: 1.2fr 1.2fr .8fr; gap:12px; margin-top:14px;
+    }
+    @media (max-width:860px){ form{grid-template-columns:1fr} }
+    input, textarea, select{
+      width:100%; padding:12px 14px; border-radius:12px; background:#0a132b; border:1px solid rgba(255,255,255,.1); color:#eaf0ff;
+      outline:none; transition: box-shadow .15s ease, border-color .15s ease;
+    }
+    input:focus, textarea:focus, select:focus{ box-shadow: 0 0 0 6px var(--ring); border-color: var(--accent) }
+    .small{font-size:.88rem; color:#a8bce9}
+    .footer{
+      padding:30px 0 50px; color:#b9c9ea; border-top:1px solid rgba(255,255,255,.08);
+    }
+    .footer .row{display:flex; gap:14px; flex-wrap:wrap; align-items:center; justify-content:space-between}
+    .sr-only{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px, 1px, 1px, 1px);white-space:nowrap}
+    .toast{
+      position:fixed; right:16px; bottom:16px; background:#0a132b; color:#dff2ff; border:1px solid rgba(125,211,252,.28); padding:12px 14px; border-radius:12px; box-shadow: var(--shadow); display:none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="wrap nav">
+      <div class="brand">
+        <span class="brand-badge" aria-hidden="true">🅰️</span>
+        <span>Ava Education</span>
+      </div>
+      <nav aria-label="Main">
+        <ul>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#courses">Courses</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="burger" aria-controls="mobile" aria-expanded="false" id="burger">Menu ▾</button>
+    </div>
+    <div class="wrap">
+      <div class="mobile" id="mobile" role="dialog" aria-modal="true" aria-label="Navigation">
+        <a href="#features" onclick="toggleMobile(false)">Features</a>
+        <a href="#courses" onclick="toggleMobile(false)">Courses</a>
+        <a href="#pricing" onclick="toggleMobile(false)">Pricing</a>
+        <a href="#contact" onclick="toggleMobile(false)">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="kicker">AI-POWERED LEARNING</div>
+        <h1>Learn smarter, speak better, <span style="background:linear-gradient(90deg,#64b5ff,#9ae6ff); -webkit-background-clip:text; background-clip:text; color:transparent">achieve more</span>.</h1>
+        <p class="lead">Ava Education is your AI study coach. Practice speaking, get instant feedback, and master exams with structured lessons—anytime, anywhere.</p>
+        <div class="meta">
+          <span class="pill">IELTS • HKDSE • TOEFL • KET/PET</span>
+          <span class="pill">English • 中文 • 粤语</span>
+        </div>
+        <div style="display:flex; gap:12px; flex-wrap:wrap">
+          <a class="btn" href="#pricing">Get Started</a>
+          <a class="btn ghost" href="#features" aria-label="See features">See Features</a>
+        </div>
+      </div>
+      <div class="card">
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:12px">
+          <div>
+            <strong>Today's Goal</strong>
+            <div class="small">Speak for 1 minute about travel</div>
+          </div>
+          <span class="pill">Practice</span>
+        </div>
+        <div class="sample">
+          <div class="snippet" aria-label="AI feedback example">
+<pre aria-hidden="true">Your answer:
+“I love visiting museums because...”</pre>
+<span class="tag">Student</span>
+          </div>
+          <div class="snippet">
+<pre>Feedback:
+• Fluency: Good pace
+• Vocabulary: Try “captivating,” “curated”
+• Pronunciation: /ˈmjuːziəm/ (MYOO-zee-uhm)
+Tip: Add a contrast sentence.</pre>
+<span class="tag">Ava AI</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features">
+    <div class="wrap">
+      <h2>Why choose Ava Education?</h2>
+      <p class="sub">Everything you need to learn faster—with feedback that actually helps.</p>
+      <div class="grid">
+        <div class="tile">
+          <div class="icon">🎯</div>
+          <h3>Structured Lessons</h3>
+          <p>Step-by-step speaking, reading, and writing paths aligned to real exam rubrics.</p>
+        </div>
+        <div class="tile">
+          <div class="icon">💬</div>
+          <h3>Instant Feedback</h3>
+          <p>Real-time scoring hints on fluency, vocabulary, grammar, and pronunciation.</p>
+        </div>
+        <div class="tile">
+          <div class="icon">🌐</div>
+          <h3>Multilingual Support</h3>
+          <p>Explanations in English, 简体中文, or 粤语—switch anytime.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Courses -->
+  <section id="courses" class="courses">
+    <div class="wrap">
+      <h2>Popular courses</h2>
+      <p class="sub">Pick a track and start practicing in minutes.</p>
+      <div class="grid">
+        <div class="tile card">
+          <div class="badge">Beginner → Intermediate</div>
+          <h3>IELTS Speaking Booster</h3>
+          <p>Daily one-minute prompts, model answers, and targeted corrections.</p>
+        </div>
+        <div class="tile card">
+          <div class="badge">Secondary • HK</div>
+          <h3>HKDSE Reading Mastery</h3>
+          <p>Scan, infer, and justify. Includes <em>Not Given</em> traps &amp; solutions.</p>
+        </div>
+        <div class="tile card">
+          <div class="badge">Kids &amp; Teens</div>
+          <h3>KET / PET Fundamentals</h3>
+          <p>Friendly drills, picture tasks, and vocabulary games.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="pricing">
+    <div class="wrap">
+      <h2>Simple pricing</h2>
+      <p class="sub">Start free. Upgrade when you're ready.</p>
+      <div class="grid">
+        <div class="plan">
+          <h3>Starter</h3>
+          <div class="price">$0</div>
+          <ul class="list">
+            <li><span class="tick">✔</span> 5 practice sessions/day</li>
+            <li><span class="tick">✔</span> Basic feedback</li>
+            <li><span class="tick">✔</span> Community prompts</li>
+          </ul>
+          <div style="margin-top:14px"><a class="btn" href="#contact">Try for Free</a></div>
+        </div>
+        <div class="plan" style="outline:2px solid rgba(78,161,255,.5);">
+          <h3>Pro</h3>
+          <div class="price">$12<span class="small"> / month</span></div>
+          <ul class="list">
+            <li><span class="tick">✔</span> Unlimited practice</li>
+            <li><span class="tick">✔</span> Advanced scoring rubrics</li>
+            <li><span class="tick">✔</span> Downloadable reports</li>
+          </ul>
+          <div style="margin-top:14px"><a class="btn" href="#contact">Go Pro</a></div>
+        </div>
+        <div class="plan">
+          <h3>Schools</h3>
+          <div class="price">Custom</div>
+          <ul class="list">
+            <li><span class="tick">✔</span> Teacher dashboards</li>
+            <li><span class="tick">✔</span> Class activities</li>
+            <li><span class="tick">✔</span> Onboarding &amp; support</li>
+          </ul>
+          <div style="margin-top:14px"><a class="btn" href="#contact">Contact Sales</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials">
+    <div class="wrap">
+      <h2>What learners say</h2>
+      <div class="grid">
+        <div class="quote">
+          <blockquote>“I improved a full band in three weeks. The feedback is specific and actionable.”</blockquote>
+          <div class="who">— Julie, IELTS Candidate</div>
+        </div>
+        <div class="quote">
+          <blockquote>“Our students finally enjoy speaking practice. Setup took under 10 minutes.”</blockquote>
+          <div class="who">— Mr. Wong, English Teacher</div>
+        </div>
+        <div class="quote">
+          <blockquote>“The bilingual tips helped me understand tricky grammar without stress.”</blockquote>
+          <div class="who">— Anaya, Secondary 3</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA + Contact -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="cta">
+        <h2>Ready to learn with Ava?</h2>
+        <p class="sub">Tell us a bit about you and we’ll get you set up.</p>
+        <form id="contactForm" novalidate>
+          <label class="sr-only" for="name">Name</label>
+          <input id="name" name="name" placeholder="Your name" required />
+
+          <label class="sr-only" for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" required />
+
+          <label class="sr-only" for="plan">Plan</label>
+          <select id="plan" name="plan" required>
+            <option value="" disabled selected>Select plan…</option>
+            <option>Starter</option>
+            <option>Pro</option>
+            <option>Schools</option>
+          </select>
+
+          <label class="sr-only" for="message">Message</label>
+          <textarea id="message" name="message" placeholder="What are your goals?" rows="4" style="grid-column: 1 / -1"></textarea>
+
+          <button class="btn" type="submit" style="grid-column: 1 / -1">Request Access</button>
+          <div class="small" style="grid-column: 1 / -1">We’ll reply within 24 hours. No spam, ever.</div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="row">
+        <div class="brand">
+          <span class="brand-badge" aria-hidden="true">🅰️</span>
+          <span>Ava Education</span>
+        </div>
+        <div class="small">© <span id="y"></span> Ava Education. All rights reserved.</div>
+      </div>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite">Thanks! We received your message.</div>
+
+  <script>
+    // Mobile menu
+    const burger = document.getElementById('burger');
+    const mobile = document.getElementById('mobile');
+    function toggleMobile(state){
+      const open = (state !== undefined) ? state : mobile.style.display !== 'block';
+      mobile.style.display = open ? 'block' : 'none';
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    burger?.addEventListener('click', () => toggleMobile());
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if(el){
+          e.preventDefault();
+          el.scrollIntoView({behavior:'smooth', block:'start'});
+        }
+      })
+    });
+
+    // Contact form (demo: client-side only)
+    const form = document.getElementById('contactForm');
+    const toast = document.getElementById('toast');
+    const y = document.getElementById('y'); y.textContent = new Date().getFullYear();
+
+    form.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(form).entries());
+      // Basic validation
+      if(!data.name || !data.email || !data.plan){
+        showToast("Please complete name, email, and plan.");
+        return;
+      }
+      // If you have a backend endpoint, replace the block below with a fetch POST.
+      // await fetch('/api/contact', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data) })
+      // In this demo, we just show success and reset.
+      showToast("Thanks! We'll be in touch shortly.");
+      form.reset();
+    });
+
+    function showToast(msg){
+      toast.textContent = msg; toast.style.display='block';
+      setTimeout(()=> toast.style.display='none', 3200);
+    }
+
+    // Close mobile menu on outside click
+    document.addEventListener('click', (e)=>{
+      if(mobile.style.display==='block' && !mobile.contains(e.target) && e.target !== burger){
+        toggleMobile(false);
+      }
+    });
+  </script>
+</body>
+</html>
