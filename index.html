@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ava Education — Learn Faster with AI</title>
-  <meta name="description" content="Ava Education helps students master English and exams with AI-powered lessons, practice, and feedback." />
+  <title>Ava 教育机构 — 用 AI 更快学会英语与考试</title>
+  <meta name="description" content="Ava 教育机构：AI 助教，口语练习、即时反馈、结构化课程，覆盖 IELTS / HKDSE / TOEFL / KET / PET。" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' x2='1' y1='0' y2='1'%3E%3Cstop stop-color='%232b7cff'/%3E%3Cstop offset='1' stop-color='%2372e0ff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='128' height='128' rx='24' fill='url(%23g)'/%3E%3Cpath d='M32 80c0-24 16-40 32-40s32 16 32 40' fill='none' stroke='%23fff' stroke-width='10' stroke-linecap='round'/%3E%3Ccircle cx='64' cy='50' r='10' fill='%23fff'/%3E%3C/svg%3E" />
   <style>
     :root{
@@ -44,14 +44,9 @@
       background: linear-gradient(180deg, rgba(11,16,32,.75), rgba(11,16,32,.35));
       border-bottom:1px solid rgba(255,255,255,.06);
     }
-    .nav{
-      display:flex; align-items:center; justify-content:space-between; padding:14px 0;
-    }
+    .nav{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
     .brand{display:flex; align-items:center; gap:.7rem; font-weight:800; letter-spacing:.2px}
-    .brand-badge{
-      width:34px; height:34px; border-radius:10px; display:grid; place-items:center;
-      background:linear-gradient(135deg,#2b7cff, #72e0ff); box-shadow: var(--shadow);
-    }
+    .brand-badge{width:34px; height:34px; border-radius:10px; display:grid; place-items:center; background:linear-gradient(135deg,#2b7cff, #72e0ff); box-shadow: var(--shadow)}
     .nav ul{display:flex; gap:1.2rem; list-style:none; padding:0; margin:0}
     .nav a{color:#cfe3ff}
     .burger{display:none}
@@ -69,316 +64,266 @@
     h1{font-size: clamp(2rem, 4vw, 3.2rem); line-height:1.1; margin:.4rem 0 1rem}
     .lead{color:#cfe3ff; font-size:1.05rem; max-width:58ch}
     .meta{display:flex; gap:16px; align-items:center; margin:22px 0 28px}
-    .meta .pill{
-      font-size:.85rem; color:#8fb5ff; border:1px solid rgba(125,211,252,.28);
-      padding:.35rem .65rem; border-radius:999px; background:rgba(125,211,252,.08)
-    }
-    .hero .card{
-      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-      border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:18px; box-shadow: var(--shadow);
-    }
-    .sample{
-      display:grid; grid-template-columns: 1fr 1fr; gap:12px; margin-top:8px
-    }
-    .snippet{
-      background:#0a132b; border:1px solid rgba(255,255,255,.07); border-radius:12px; padding:12px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
-      color:#b9cdfc; font-size:.9rem; line-height:1.4; position:relative;
-    }
+    .meta .pill{font-size:.85rem; color:#8fb5ff; border:1px solid rgba(125,211,252,.28); padding:.35rem .65rem; border-radius:999px; background:rgba(125,211,252,.08)}
+    .hero .card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:18px; box-shadow: var(--shadow)}
+    .sample{display:grid; grid-template-columns: 1fr 1fr; gap:12px; margin-top:8px}
+    .snippet{background:#0a132b; border:1px solid rgba(255,255,255,.07); border-radius:12px; padding:12px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; color:#b9cdfc; font-size:.9rem; line-height:1.4; position:relative}
     .snippet .tag{position:absolute; top:8px; right:10px; font-size:.7rem; color:#88a4e6}
 
     section{padding:70px 0}
     h2{font-size: clamp(1.6rem, 3.2vw, 2.2rem); margin:0 0 10px}
     .sub{color:#c9d9ff; margin:0 0 26px}
     .grid{display:grid; grid-template-columns: repeat(3, 1fr); gap:18px}
-    @media (max-width:900px){ .hero-grid{grid-template-columns:1fr} .grid{grid-template-columns:1fr; } .sample{grid-template-columns:1fr} }
+    @media (max-width:900px){ .hero-grid{grid-template-columns:1fr} .grid{grid-template-columns:1fr;} .sample{grid-template-columns:1fr} }
 
-    .tile{
-      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
-      border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:18px; box-shadow: var(--shadow);
-    }
+    .tile{background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:18px; box-shadow: var(--shadow)}
     .tile h3{margin:6px 0 8px; font-size:1.1rem}
     .tile p{margin:0; color:#cfe3ff}
-    .icon{
-      width:42px; height:42px; border-radius:10px; display:grid; place-items:center; margin-bottom:10px;
-      background:linear-gradient(135deg, rgba(78,161,255,.25), rgba(125,211,252,.25));
-      border:1px solid rgba(255,255,255,.12)
-    }
+    .icon{width:42px; height:42px; border-radius:10px; display:grid; place-items:center; margin-bottom:10px; background:linear-gradient(135deg, rgba(78,161,255,.25), rgba(125,211,252,.25)); border:1px solid rgba(255,255,255,.12)}
 
     .courses .card{display:flex; flex-direction:column; gap:12px}
     .courses .badge{font-size:.75rem; color:#a8ffc3; border:1px solid rgba(155,227,128,.35); background: rgba(155,227,128,.08); padding:.25rem .55rem; border-radius:999px}
 
-    .pricing .plan{
-      padding:22px; border-radius:var(--radius);
-      border:1px solid rgba(255,255,255,.08); background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-      box-shadow: var(--shadow);
-    }
+    .pricing .plan{padding:22px; border-radius:var(--radius); border:1px solid rgba(255,255,255,.08); background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); box-shadow: var(--shadow)}
     .price{font-weight:900; font-size:2rem}
     .list{margin:12px 0 0; padding:0; list-style:none}
     .list li{padding:8px 0; display:flex; gap:10px; align-items:baseline; color:#d8e7ff}
     .tick{color:var(--ok); font-weight:900}
 
-    .testimonials .quote{
-      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
-      border:1px solid rgba(255,255,255,.08); padding:18px; border-radius:var(--radius);
-    }
+    .testimonials .quote{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.08); padding:18px; border-radius:var(--radius)}
     blockquote{margin:0; color:#dbe8ff}
     .who{color:#9fb7ff; font-size:.95rem; margin-top:8px}
 
-    .cta{
-      background: linear-gradient(180deg, rgba(78,161,255,.14), rgba(125,211,252,.08));
-      border:1px solid rgba(255,255,255,.12); border-radius:calc(var(--radius) + 6px);
-      padding:26px; box-shadow: var(--shadow);
-    }
-    form{
-      display:grid; grid-template-columns: 1.2fr 1.2fr .8fr; gap:12px; margin-top:14px;
-    }
+    .cta{background: linear-gradient(180deg, rgba(78,161,255,.14), rgba(125,211,252,.08)); border:1px solid rgba(255,255,255,.12); border-radius:calc(var(--radius) + 6px); padding:26px; box-shadow: var(--shadow)}
+    form{display:grid; grid-template-columns: 1.2fr 1.2fr .8fr; gap:12px; margin-top:14px}
     @media (max-width:860px){ form{grid-template-columns:1fr} }
-    input, textarea, select{
-      width:100%; padding:12px 14px; border-radius:12px; background:#0a132b; border:1px solid rgba(255,255,255,.1); color:#eaf0ff;
-      outline:none; transition: box-shadow .15s ease, border-color .15s ease;
-    }
+    input, textarea, select{width:100%; padding:12px 14px; border-radius:12px; background:#0a132b; border:1px solid rgba(255,255,255,.1); color:#eaf0ff; outline:none; transition: box-shadow .15s ease, border-color .15s ease}
     input:focus, textarea:focus, select:focus{ box-shadow: 0 0 0 6px var(--ring); border-color: var(--accent) }
     .small{font-size:.88rem; color:#a8bce9}
-    .footer{
-      padding:30px 0 50px; color:#b9c9ea; border-top:1px solid rgba(255,255,255,.08);
-    }
+    .footer{padding:30px 0 50px; color:#b9c9ea; border-top:1px solid rgba(255,255,255,.08)}
     .footer .row{display:flex; gap:14px; flex-wrap:wrap; align-items:center; justify-content:space-between}
     .sr-only{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px, 1px, 1px, 1px);white-space:nowrap}
-    .toast{
-      position:fixed; right:16px; bottom:16px; background:#0a132b; color:#dff2ff; border:1px solid rgba(125,211,252,.28); padding:12px 14px; border-radius:12px; box-shadow: var(--shadow); display:none;
-    }
+    .toast{position:fixed; right:16px; bottom:16px; background:#0a132b; color:#dff2ff; border:1px solid rgba(125,211,252,.28); padding:12px 14px; border-radius:12px; box-shadow: var(--shadow); display:none}
+
+    /* Canva hero embed */
+    .hero-embed{width:100%; border-radius:16px; overflow:hidden; border:1px solid rgba(255,255,255,.08); background:#0a132b}
+    .hero-embed iframe{width:100%; aspect-ratio: 16 / 9; display:block; border:0}
   </style>
 </head>
 <body>
-  <!-- Header -->
+  <!-- 头部导航 -->
   <header>
     <div class="wrap nav">
       <div class="brand">
         <span class="brand-badge" aria-hidden="true">🅰️</span>
-        <span>Ava Education</span>
+        <span>Ava 教育机构</span>
       </div>
-      <nav aria-label="Main">
+      <nav aria-label="主导航">
         <ul>
-          <li><a href="#features">Features</a></li>
-          <li><a href="#courses">Courses</a></li>
-          <li><a href="#pricing">Pricing</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#features">功能</a></li>
+          <li><a href="#courses">课程</a></li>
+          <li><a href="#pricing">价格</a></li>
+          <li><a href="#contact">联系我们</a></li>
         </ul>
       </nav>
-      <button class="burger" aria-controls="mobile" aria-expanded="false" id="burger">Menu ▾</button>
+      <button class="burger" aria-controls="mobile" aria-expanded="false" id="burger">菜单 ▾</button>
     </div>
     <div class="wrap">
-      <div class="mobile" id="mobile" role="dialog" aria-modal="true" aria-label="Navigation">
-        <a href="#features" onclick="toggleMobile(false)">Features</a>
-        <a href="#courses" onclick="toggleMobile(false)">Courses</a>
-        <a href="#pricing" onclick="toggleMobile(false)">Pricing</a>
-        <a href="#contact" onclick="toggleMobile(false)">Contact</a>
+      <div class="mobile" id="mobile" role="dialog" aria-modal="true" aria-label="移动导航">
+        <a href="#features" onclick="toggleMobile(false)">功能</a>
+        <a href="#courses" onclick="toggleMobile(false)">课程</a>
+        <a href="#pricing" onclick="toggleMobile(false)">价格</a>
+        <a href="#contact" onclick="toggleMobile(false)">联系我们</a>
       </div>
     </div>
   </header>
 
-  <!-- Hero -->
+  <!-- Hero 区域（左文案 + 右侧 Canva 嵌入） -->
   <section class="hero">
     <div class="wrap hero-grid">
       <div>
-        <div class="kicker">AI-POWERED LEARNING</div>
-        <h1>Learn smarter, speak better, <span style="background:linear-gradient(90deg,#64b5ff,#9ae6ff); -webkit-background-clip:text; background-clip:text; color:transparent">achieve more</span>.</h1>
-        <p class="lead">Ava Education is your AI study coach. Practice speaking, get instant feedback, and master exams with structured lessons—anytime, anywhere.</p>
+        <div class="kicker">AI 驱动学习</div>
+        <h1>更聪明地学习，开口更自信，<span style="background:linear-gradient(90deg,#64b5ff,#9ae6ff); -webkit-background-clip:text; background-clip:text; color:transparent">成绩更出色</span>。</h1>
+        <p class="lead">Ava 教育机构是你的 AI 学习教练。随时随地练口语、拿反馈、走结构化课程，直连各大考试标准。</p>
         <div class="meta">
           <span class="pill">IELTS • HKDSE • TOEFL • KET/PET</span>
-          <span class="pill">English • 中文 • 粤语</span>
+          <span class="pill">English • 简体中文 • 粤语</span>
         </div>
         <div style="display:flex; gap:12px; flex-wrap:wrap">
-          <a class="btn" href="#pricing">Get Started</a>
-          <a class="btn ghost" href="#features" aria-label="See features">See Features</a>
+          <a class="btn" href="#pricing">马上开始</a>
+          <a class="btn ghost" href="#features" aria-label="查看功能">查看功能</a>
         </div>
       </div>
-      <div class="card">
-        <div style="display:flex; align-items:center; justify-content:space-between; gap:12px">
-          <div>
-            <strong>Today's Goal</strong>
-            <div class="small">Speak for 1 minute about travel</div>
-          </div>
-          <span class="pill">Practice</span>
+      <div>
+        <!-- 将你的 Canva 链接粘贴到下方 src 中（必须是官方“嵌入”链接，通常以 /view?embed 结尾） -->
+        <div class="hero-embed">
+          <iframe id="canvaHero" src="https://www.canva.com/design/DAGzTfuh11E/pHgTgmZDV1G855UB6ygnjw/view?utm_content=DAGzTfuh11E&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hf4990d44be
+" title="Ava Hero Canva" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
         </div>
-        <div class="sample">
-          <div class="snippet" aria-label="AI feedback example">
-<pre aria-hidden="true">Your answer:
-“I love visiting museums because...”</pre>
-<span class="tag">Student</span>
-          </div>
-          <div class="snippet">
-<pre>Feedback:
-• Fluency: Good pace
-• Vocabulary: Try “captivating,” “curated”
-• Pronunciation: /ˈmjuːziəm/ (MYOO-zee-uhm)
-Tip: Add a contrast sentence.</pre>
-<span class="tag">Ava AI</span>
-          </div>
-        </div>
+        <!-- 如果你拿到的是 Canva 提供的脚本方式（.canva-embed + script），也可以把官方代码整体替换掉上面的 <div class="hero-embed">…</div> 块。 -->
       </div>
     </div>
   </section>
 
-  <!-- Features -->
+  <!-- 功能 -->
   <section id="features">
     <div class="wrap">
-      <h2>Why choose Ava Education?</h2>
-      <p class="sub">Everything you need to learn faster—with feedback that actually helps.</p>
+      <h2>为什么选择 Ava 教育机构？</h2>
+      <p class="sub">学得更快、改得更准、用得更久的学习体验。</p>
       <div class="grid">
         <div class="tile">
           <div class="icon">🎯</div>
-          <h3>Structured Lessons</h3>
-          <p>Step-by-step speaking, reading, and writing paths aligned to real exam rubrics.</p>
+          <h3>结构化课程</h3>
+          <p>口语 / 阅读 / 写作循序渐进，严格对齐真实考纲与评分细则。</p>
         </div>
         <div class="tile">
           <div class="icon">💬</div>
-          <h3>Instant Feedback</h3>
-          <p>Real-time scoring hints on fluency, vocabulary, grammar, and pronunciation.</p>
+          <h3>即时反馈</h3>
+          <p>流利度、词汇、语法、发音多维提示，边练边提升。</p>
         </div>
         <div class="tile">
           <div class="icon">🌐</div>
-          <h3>Multilingual Support</h3>
-          <p>Explanations in English, 简体中文, or 粤语—switch anytime.</p>
+          <h3>多语言讲解</h3>
+          <p>英文 / 中文 / 粤语自由切换，难点一步懂。</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Courses -->
+  <!-- 课程 -->
   <section id="courses" class="courses">
     <div class="wrap">
-      <h2>Popular courses</h2>
-      <p class="sub">Pick a track and start practicing in minutes.</p>
+      <h2>热门课程</h2>
+      <p class="sub">选择你的目标，几分钟就能开始。</p>
       <div class="grid">
         <div class="tile card">
-          <div class="badge">Beginner → Intermediate</div>
-          <h3>IELTS Speaking Booster</h3>
-          <p>Daily one-minute prompts, model answers, and targeted corrections.</p>
+          <div class="badge">基础 → 进阶</div>
+          <h3>IELTS 口语加速营</h3>
+          <p>每日 1 分钟口语题卡，示范答案 + 针对性纠错。</p>
         </div>
         <div class="tile card">
-          <div class="badge">Secondary • HK</div>
-          <h3>HKDSE Reading Mastery</h3>
-          <p>Scan, infer, and justify. Includes <em>Not Given</em> traps &amp; solutions.</p>
+          <div class="badge">中学 • 香港</div>
+          <h3>HKDSE 阅读高手</h3>
+          <p>扫描、推断、论证。专练 <em>Not Given</em> 陷阱与破题法。</p>
         </div>
         <div class="tile card">
-          <div class="badge">Kids &amp; Teens</div>
-          <h3>KET / PET Fundamentals</h3>
-          <p>Friendly drills, picture tasks, and vocabulary games.</p>
+          <div class="badge">少儿 & 青少年</div>
+          <h3>KET / PET 基础功</h3>
+          <p>轻松练习、看图表达、词汇游戏，兴趣驱动。</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Pricing -->
+  <!-- 价格 -->
   <section id="pricing" class="pricing">
     <div class="wrap">
-      <h2>Simple pricing</h2>
-      <p class="sub">Start free. Upgrade when you're ready.</p>
+      <h2>简单透明的价格</h2>
+      <p class="sub">先免费体验，准备好再升级。</p>
       <div class="grid">
         <div class="plan">
-          <h3>Starter</h3>
-          <div class="price">$0</div>
+          <h3>入门</h3>
+          <div class="price">¥0</div>
           <ul class="list">
-            <li><span class="tick">✔</span> 5 practice sessions/day</li>
-            <li><span class="tick">✔</span> Basic feedback</li>
-            <li><span class="tick">✔</span> Community prompts</li>
+            <li><span class="tick">✔</span> 每日 5 次练习</li>
+            <li><span class="tick">✔</span> 基础反馈</li>
+            <li><span class="tick">✔</span> 社区题库</li>
           </ul>
-          <div style="margin-top:14px"><a class="btn" href="#contact">Try for Free</a></div>
+          <div style="margin-top:14px"><a class="btn" href="#contact">免费试用</a></div>
         </div>
         <div class="plan" style="outline:2px solid rgba(78,161,255,.5);">
-          <h3>Pro</h3>
-          <div class="price">$12<span class="small"> / month</span></div>
+          <h3>专业</h3>
+          <div class="price">¥88<span class="small"> / 月</span></div>
           <ul class="list">
-            <li><span class="tick">✔</span> Unlimited practice</li>
-            <li><span class="tick">✔</span> Advanced scoring rubrics</li>
-            <li><span class="tick">✔</span> Downloadable reports</li>
+            <li><span class="tick">✔</span> 不限练习次数</li>
+            <li><span class="tick">✔</span> 进阶评分维度</li>
+            <li><span class="tick">✔</span> 可下载学习报告</li>
           </ul>
-          <div style="margin-top:14px"><a class="btn" href="#contact">Go Pro</a></div>
+          <div style="margin-top:14px"><a class="btn" href="#contact">立即升级</a></div>
         </div>
         <div class="plan">
-          <h3>Schools</h3>
-          <div class="price">Custom</div>
+          <h3>校园</h3>
+          <div class="price">定制</div>
           <ul class="list">
-            <li><span class="tick">✔</span> Teacher dashboards</li>
-            <li><span class="tick">✔</span> Class activities</li>
-            <li><span class="tick">✔</span> Onboarding &amp; support</li>
+            <li><span class="tick">✔</span> 教师数据看板</li>
+            <li><span class="tick">✔</span> 课堂活动方案</li>
+            <li><span class="tick">✔</span> 入驻与培训支持</li>
           </ul>
-          <div style="margin-top:14px"><a class="btn" href="#contact">Contact Sales</a></div>
+          <div style="margin-top:14px"><a class="btn" href="#contact">联系销售</a></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Testimonials -->
+  <!-- 口碑 -->
   <section class="testimonials">
     <div class="wrap">
-      <h2>What learners say</h2>
+      <h2>学员怎么说</h2>
       <div class="grid">
         <div class="quote">
-          <blockquote>“I improved a full band in three weeks. The feedback is specific and actionable.”</blockquote>
-          <div class="who">— Julie, IELTS Candidate</div>
+          <blockquote>“三周就提了整整 1 个 Band。反馈非常具体且可操作。”</blockquote>
+          <div class="who">— Julie，IELTS 考生</div>
         </div>
         <div class="quote">
-          <blockquote>“Our students finally enjoy speaking practice. Setup took under 10 minutes.”</blockquote>
-          <div class="who">— Mr. Wong, English Teacher</div>
+          <blockquote>“学生终于喜欢上口语练习了。上手不到 10 分钟。”</blockquote>
+          <div class="who">— Mr. Wong，英语教师</div>
         </div>
         <div class="quote">
-          <blockquote>“The bilingual tips helped me understand tricky grammar without stress.”</blockquote>
-          <div class="who">— Anaya, Secondary 3</div>
+          <blockquote>“双语提示帮我搞懂了很多语法细节，完全不焦虑。”</blockquote>
+          <div class="who">— Anaya，中三学生</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA + Contact -->
+  <!-- 行动 / 联系表单 -->
   <section id="contact">
     <div class="wrap">
       <div class="cta">
-        <h2>Ready to learn with Ava?</h2>
-        <p class="sub">Tell us a bit about you and we’ll get you set up.</p>
+        <h2>准备好跟 Ava 一起学习了吗？</h2>
+        <p class="sub">告诉我们你的目标，我们会尽快为你开通。</p>
         <form id="contactForm" novalidate>
-          <label class="sr-only" for="name">Name</label>
-          <input id="name" name="name" placeholder="Your name" required />
+          <label class="sr-only" for="name">姓名</label>
+          <input id="name" name="name" placeholder="你的姓名" required />
 
-          <label class="sr-only" for="email">Email</label>
+          <label class="sr-only" for="email">邮箱</label>
           <input id="email" name="email" type="email" placeholder="you@example.com" required />
 
-          <label class="sr-only" for="plan">Plan</label>
+          <label class="sr-only" for="plan">套餐</label>
           <select id="plan" name="plan" required>
-            <option value="" disabled selected>Select plan…</option>
-            <option>Starter</option>
-            <option>Pro</option>
-            <option>Schools</option>
+            <option value="" disabled selected>请选择套餐…</option>
+            <option>入门</option>
+            <option>专业</option>
+            <option>校园</option>
           </select>
 
-          <label class="sr-only" for="message">Message</label>
-          <textarea id="message" name="message" placeholder="What are your goals?" rows="4" style="grid-column: 1 / -1"></textarea>
+          <label class="sr-only" for="message">留言</label>
+          <textarea id="message" name="message" placeholder="你的学习目标 / 考试时间" rows="4" style="grid-column: 1 / -1"></textarea>
 
-          <button class="btn" type="submit" style="grid-column: 1 / -1">Request Access</button>
-          <div class="small" style="grid-column: 1 / -1">We’ll reply within 24 hours. No spam, ever.</div>
+          <button class="btn" type="submit" style="grid-column: 1 / -1">提交申请</button>
+          <div class="small" style="grid-column: 1 / -1">我们会在 24 小时内回复。绝不骚扰。</div>
         </form>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- 页脚 -->
   <footer class="footer">
     <div class="wrap">
       <div class="row">
         <div class="brand">
           <span class="brand-badge" aria-hidden="true">🅰️</span>
-          <span>Ava Education</span>
+          <span>Ava 教育机构</span>
         </div>
-        <div class="small">© <span id="y"></span> Ava Education. All rights reserved.</div>
+        <div class="small">© <span id="y"></span> Ava 教育机构 保留所有权利。</div>
       </div>
     </div>
   </footer>
 
-  <div id="toast" class="toast" role="status" aria-live="polite">Thanks! We received your message.</div>
+  <div id="toast" class="toast" role="status" aria-live="polite">已收到你的信息，感谢！</div>
 
   <script>
-    // Mobile menu
+    // 移动端菜单
     const burger = document.getElementById('burger');
     const mobile = document.getElementById('mobile');
     function toggleMobile(state){
@@ -388,19 +333,16 @@ Tip: Add a contrast sentence.</pre>
     }
     burger?.addEventListener('click', () => toggleMobile());
 
-    // Smooth scroll
+    // 平滑滚动
     document.querySelectorAll('a[href^="#"]').forEach(a=>{
       a.addEventListener('click', e=>{
         const id = a.getAttribute('href').slice(1);
         const el = document.getElementById(id);
-        if(el){
-          e.preventDefault();
-          el.scrollIntoView({behavior:'smooth', block:'start'});
-        }
+        if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth', block:'start'}); }
       })
     });
 
-    // Contact form (demo: client-side only)
+    // 表单（演示：仅前端）
     const form = document.getElementById('contactForm');
     const toast = document.getElementById('toast');
     const y = document.getElementById('y'); y.textContent = new Date().getFullYear();
@@ -408,15 +350,13 @@ Tip: Add a contrast sentence.</pre>
     form.addEventListener('submit', async (e)=>{
       e.preventDefault();
       const data = Object.fromEntries(new FormData(form).entries());
-      // Basic validation
       if(!data.name || !data.email || !data.plan){
-        showToast("Please complete name, email, and plan.");
+        showToast("请先填写姓名、邮箱和套餐。");
         return;
       }
-      // If you have a backend endpoint, replace the block below with a fetch POST.
+      // 若你有后端接口，可替换为：
       // await fetch('/api/contact', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data) })
-      // In this demo, we just show success and reset.
-      showToast("Thanks! We'll be in touch shortly.");
+      showToast("感谢提交！我们会尽快联系你。");
       form.reset();
     });
 
@@ -425,12 +365,22 @@ Tip: Add a contrast sentence.</pre>
       setTimeout(()=> toast.style.display='none', 3200);
     }
 
-    // Close mobile menu on outside click
+    // 点击外部收起移动菜单
     document.addEventListener('click', (e)=>{
       if(mobile.style.display==='block' && !mobile.contains(e.target) && e.target !== burger){
         toggleMobile(false);
       }
     });
+
+    // 允许通过查询参数 ?canva=URL 动态注入 Canva 嵌入地址（便于测试）
+    (function(){
+      const params = new URLSearchParams(location.search);
+      const url = params.get('canva');
+      if(url){
+        const iframe = document.getElementById('canvaHero');
+        if(iframe) iframe.src = decodeURIComponent(url);
+      }
+    })();
   </script>
 </body>
 </html>
